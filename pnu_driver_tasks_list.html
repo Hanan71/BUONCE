@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BOUNCE - قائمة المهام</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* إعدادات الصفحة الأساسية وتوسيط الجوال */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; background: #f0f2f5; 
+            display: flex; justify-content: center; align-items: center; min-height: 100vh;
+        }
+
+        /* إطار الجوال الاحترافي */
+        .mobile-frame { 
+            width: 100%; max-width: 400px; height: 800px; 
+            background: white; position: relative; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2); 
+            border-radius: 40px; border: 12px solid #333; 
+            overflow: hidden; display: flex; flex-direction: column;
+        }
+
+        header {
+            padding: 20px; background: #134454; color: white;
+            text-align: center; border-radius: 0 0 25px 25px; flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .tabs-container {
+            display: flex; justify-content: space-around; padding: 15px 5px;
+            background: white; border-bottom: 1px solid #f0f0f0; flex-shrink: 0;
+        }
+        .tab-item {
+            font-size: 13px; color: #aaa; cursor: pointer; padding: 5px 10px;
+            transition: 0.3s; position: relative;
+        }
+        .tab-item.active {
+            color: #134454; font-weight: bold;
+        }
+        .tab-item.active::after {
+            content: ''; position: absolute; bottom: -2px; left: 20%; right: 20%;
+            height: 3px; background: #134454; border-radius: 10px;
+        }
+
+        main { flex: 1; overflow-y: auto; padding: 15px; background: #fdfdfd; }
+        
+        /* شريط التمرير */
+        main::-webkit-scrollbar { width: 4px; }
+        main::-webkit-scrollbar-thumb { background: #eee; border-radius: 10px; }
+
+        /* ستايل كرت المهمة */
+        .task-card {
+            background: white; border-radius: 20px; padding: 18px;
+            margin-bottom: 15px; border: 1px solid #f0f0f0; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            transition: transform 0.2s;
+        }
+        .task-card:active { transform: scale(0.98); }
+
+        .task-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        
+        .task-type { font-size: 10px; padding: 4px 10px; border-radius: 8px; font-weight: bold; }
+        .type-delivery { background: #e3f2fd; color: #1e88e5; } 
+        .type-locker { background: #e8f5e9; color: #388e3c; }   
+        .type-paper { background: #fff3e0; color: #f4511e; }    
+
+        .task-info { display: flex; gap: 15px; align-items: center; }
+        .task-icon-box {
+            width: 50px; height: 50px; border-radius: 15px; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center; font-size: 20px;
+        }
+
+        .task-details h4 { margin: 0; color: #134454; font-size: 14px; line-height: 1.4; }
+        .task-details p { margin: 4px 0 0; font-size: 11px; color: #888; }
+
+        .task-footer {
+            margin-top: 15px; padding-top: 12px; border-top: 1px solid #f9f9f9;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .price { font-weight: 800; color: #134454; font-size: 16px; }
+        .price span { font-size: 10px; font-weight: normal; margin-right: 2px; }
+
+        .accept-btn {
+            background: #134454; color: white; border: none; padding: 10px 25px;
+            border-radius: 12px; font-size: 12px; font-weight: bold; cursor: pointer;
+            transition: 0.3s; box-shadow: 0 4px 10px rgba(19, 68, 84, 0.2);
+        }
+        .accept-btn:hover { background: #1a5a6e; }
+
+        /* الناف بار السفلي */
+        .bottom-nav {
+            background: white; border-top: 1px solid #eee; display: flex;
+            justify-content: space-around; padding: 12px 0; flex-shrink: 0;
+        }
+        .nav-item {
+            text-align: center; text-decoration: none; color: #bbb;
+            display: flex; flex-direction: column; align-items: center; gap: 4px;
+        }
+        .nav-item i { font-size: 18px; }
+        .nav-item span { font-size: 10px; font-weight: 500; }
+        .nav-item.active { color: #134454; }
+    </style>
+</head>
+<body>
+    <div class="mobile-frame">
+        <header>
+            <h3 style="margin: 0; font-size: 17px; letter-spacing: 0.5px;">المهام المتاحة القريبة 📍</h3>
+        </header>
+
+        <div class="tabs-container">
+            <div class="tab-item active">الكل</div>
+            <div class="tab-item">توصيل</div>
+            <div class="tab-item">لوكر</div>
+            <div class="tab-item">مستندات</div>
+        </div>
+
+        <main>
+            <div class="task-card">
+                <div class="task-header">
+                    <span class="task-type type-delivery">توصيل طلب</span>
+                    <span style="font-size: 10px; color: #bbb;"><i class="far fa-clock"></i> منذ 5 دقائق</span>
+                </div>
+                <div class="task-info">
+                    <div class="task-icon-box" style="background: #f0f7f9; color: #2c8fac;">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <div class="task-details">
+                        <h4>من: كافيه بارن (محطة A4)</h4>
+                        <p>إلى: كلية اللغات - مبنى 2.100</p>
+                        <p style="color: #2c8fac; margin-top: 4px; font-weight: 500;"><i class="fas fa-walking"></i> 300 متر بعيد عنكِ</p>
+                    </div>
+                </div>
+                <div class="task-footer">
+                    <span class="price">15 <span>ريال</span></span>
+                    <button class="accept-btn" onclick="location.href='pnu_driver_order_details.html'">قبول المهمة</button>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-header">
+                    <span class="task-type type-locker">إيداع في لوكر</span>
+                    <span style="font-size: 10px; color: #bbb;"><i class="far fa-clock"></i> منذ 12 دقيقة</span>
+                </div>
+                <div class="task-info">
+                    <div class="task-icon-box" style="background: #f7faf9; color: #86c2a4;">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="task-details">
+                        <h4>استلام شحنة من شمس</h4>
+                        <p>إيداع في: لوكر محطة A4</p>
+                        <p style="color: #86c2a4; margin-top: 4px; font-weight: 500;"><i class="fas fa-walking"></i> 150 متر بعيد عنكِ</p>
+                    </div>
+                </div>
+                <div class="task-footer">
+                    <span class="price">10 <span>ريال</span></span>
+                    <button class="accept-btn">قبول المهمة</button>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-header">
+                    <span class="task-type type-paper">توصيل مستندات</span>
+                    <span style="font-size: 10px; color: #bbb;"><i class="far fa-clock"></i> منذ 20 دقيقة</span>
+                </div>
+                <div class="task-info">
+                    <div class="task-icon-box" style="background: #fff9eb; color: #e4b33e;">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="task-details">
+                        <h4>من: مكتبة التصوير (A4)</h4>
+                        <p>إلى: عمادة القبول والتسجيل</p>
+                        <p style="color: #e4b33e; margin-top: 4px; font-weight: 500;"><i class="fas fa-walking"></i> 450 متر بعيد عنكِ</p>
+                    </div>
+                </div>
+                <div class="task-footer">
+                    <span class="price">12 <span>ريال</span></span>
+                    <button class="accept-btn">قبول المهمة</button>
+                </div>
+            </div>
+        </main>
+
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item"><i class="fas fa-map"></i><span>خريطة</span></a>
+            <a href="orders.html" class="nav-item active"><i class="fas fa-clipboard-list"></i><span>طلبات</span></a>
+            <a href="rewards.html" class="nav-item"><i class="fas fa-gift"></i><span>مكافئات</span></a>
+            <a href="profile.html" class="nav-item"><i class="fas fa-user"></i><span>الحساب</span></a>
+        </nav>
+    </div>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BOUNCE - المحفظة</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .bottom-nav {
+            background: white; border-top: 1px solid #eee; display: flex;
+            justify-content: space-around; padding: 12px 0; position: absolute;
+            bottom: 0; width: 100%; z-index: 100;
+        }
+        .nav-item {
+            text-align: center; text-decoration: none; color: #bbb;
+            display: flex; flex-direction: column; align-items: center; gap: 5px;
+        }
+        .nav-item i { font-size: 18px; }
+        .nav-item span { font-size: 10px; }
+        .nav-item.active { color: #2c8fac; }
+
+        /* ستايل البطاقة البنكية */
+        .credit-card {
+            background: linear-gradient(135deg, #134454 0%, #2c8fac 100%);
+            border-radius: 20px; padding: 25px; color: white;
+            position: relative; overflow: hidden; margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(19,68,84,0.2);
+        }
+        .card-chip {
+            width: 45px; height: 35px; background: #e5cc91;
+            border-radius: 5px; margin-bottom: 20px; opacity: 0.8;
+        }
+
+        .payment-method {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 15px; background: #f9f9f9; border-radius: 15px;
+            margin-bottom: 12px; border: 1px solid #eee; cursor: pointer;
+        }
+        .add-btn {
+            width: 100%; padding: 15px; border-radius: 15px;
+            border: 2px dashed #2c8fac; background: transparent;
+            color: #2c8fac; font-weight: bold; cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="mobile-frame">
+        <div class="wallet-page" style="height: 100%; display: flex; flex-direction: column; background: #fff; position: relative;">
+            
+            <header style="padding: 20px; display: flex; align-items: center; justify-content: space-between;">
+                <a href="customer_profile.html" style="color: #333; font-size: 20px;"><i class="fas fa-arrow-right"></i></a>
+                <h3 style="font-size: 18px; margin: 0; color: #134454;">المحفظة والدفع</h3>
+                <div style="width: 20px;"></div> </header>
+
+            <main style="flex: 1; padding: 0 20px; overflow-y: auto; padding-bottom: 100px;">
+                
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <p style="color: #888; font-size: 13px; margin-bottom: 5px;">الرصيد الحالي</p>
+                    <h1 style="color: #134454; font-size: 32px; margin: 0;">150.00 <span style="font-size: 16px;">ر.س</span></h1>
+                    <button style="background: #86c2a4; color: #134454; border: none; padding: 8px 20px; border-radius: 20px; margin-top: 15px; font-weight: bold; font-size: 13px;">
+                        <i class="fas fa-plus-circle"></i> شحن الرصيد
+                    </button>
+                </div>
+
+                <h4 style="color: #333; margin-bottom: 15px;">البطاقة الأساسية</h4>
+                <div class="credit-card">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div class="card-chip"></div>
+                        <i class="fab fa-cc-visa" style="font-size: 35px; opacity: 0.9;"></i>
+                    </div>
+                    <div style="font-size: 18px; letter-spacing: 2px; margin-bottom: 20px;">
+                        **** **** **** 4242
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                        <div>
+                            <p style="font-size: 9px; opacity: 0.7; margin: 0;">صاحب البطاقة</p>
+                            <p style="font-size: 14px; margin: 0;">SHAMS MOHAMMED</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 9px; opacity: 0.7; margin: 0;">التاريخ</p>
+                            <p style="font-size: 14px; margin: 0;">12/28</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 style="color: #333; margin: 25px 0 15px;">طرق دفع أخرى</h4>
+                
+                <div class="payment-method">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <i class="fab fa-apple-pay" style="font-size: 28px;"></i>
+                        <span style="font-size: 14px;">Apple Pay</span>
+                    </div>
+                    <i class="fas fa-check-circle" style="color: #86c2a4;"></i>
+                </div>
+
+                <div class="payment-method">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <i class="fas fa-money-bill-wave" style="color: #134454;"></i>
+                        <span style="font-size: 14px;">الدفع نقداً عند الاستلام</span>
+                    </div>
+                    <div style="width: 20px; height: 20px; border: 2px solid #eee; border-radius: 50%;"></div>
+                </div>
+
+                <button class="add-btn">
+                    <i class="fas fa-plus"></i> إضافة بطاقة جديدة
+                </button>
+
+            </main>
+
+            <nav class="bottom-nav">
+                <a href="customer_home.html" class="nav-item active"><i class="fas fa-map"></i><span>خريطة</span></a>
+                <a href="customer_order.html" class="nav-item"><i class="fas fa-clipboard-list"></i><span>طلبات</span></a>
+                <a href="customer_rewards.html" class="nav-item"><i class="fas fa-gift"></i><span>مكافات</span></a>
+                <a href="customer_profile.html" class="nav-item"><i class="fas fa-user"></i><span>الحساب</span></a>
+            </nav>
+
+        </div>
+    </div>
+</body>
+</html>

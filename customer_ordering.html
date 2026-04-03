@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BOUNCE - الرئيسية</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ستايل الناف بار */
+        .bottom-nav {
+            background: white;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            z-index: 10;
+        }
+        .nav-item {
+            text-align: center;
+            text-decoration: none;
+            color: #bbb;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            transition: 0.3s;
+        }
+        .nav-item i { font-size: 18px; }
+        .nav-item span { font-size: 10px; font-weight: 500; }
+        .nav-item.active { color: var(--pnu-teal); }
+
+        /* حركة التلويح للأيقونة */
+        @keyframes waving-hand {
+            0% { transform: rotate(0deg); }
+            10% { transform: rotate(14deg); }
+            20% { transform: rotate(-8deg); }
+            30% { transform: rotate(14deg); }
+            40% { transform: rotate(-4deg); }
+            50% { transform: rotate(10deg); }
+            60% { transform: rotate(0deg); }
+            100% { transform: rotate(0deg); }
+        }
+        .waving-icon {
+            display: inline-block;
+            animation: waving-hand 2.5s infinite;
+            transform-origin: 70% 70%;
+            color: #e4b33e;
+            margin-right: 8px;
+        }
+
+        /* تنسيق الجريد للخدمات */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .service-card {
+            padding: 20px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .service-card:active { transform: scale(0.95); }
+        .service-card i {
+            font-size: 40px;
+            opacity: 0.15;
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="mobile-frame">
+        <div class="main-app" style="height: 100%; display: flex; flex-direction: column; background: #fdfdfd; position: relative;">
+            
+            <header class="app-header" style="padding: 15px; display: flex; justify-content: space-between; align-items: center; background: white; border-bottom: 1px solid #f9f9f9;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <a href="customer_profile.html" style="text-decoration: none;">
+                        <div style="width: 40px; height: 40px; background: #f0f0f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid #eee; overflow: hidden;">
+                             <i class="fas fa-user-graduate" style="color: #134454; font-size: 18px;"></i>
+                        </div>
+                    </a>
+                    <div>
+                        <p style="font-size: 10px; color: #888; margin: 0;">مرحباً بكِ</p>
+                        <h3 style="font-size: 14px; margin: 0; color: #134454; display: flex; align-items: center;">
+                            يا شمس 
+                            <span class="waving-icon">
+                                <i class="fas fa-hand-paper"></i>
+                            </span>
+                        </h3>
+                    </div>
+                </div>
+                <div style="position: relative;">
+                    <i class="fas fa-bell" style="font-size: 20px; color: #134454;"></i>
+                    <span style="position: absolute; top: -2px; right: -2px; background: #ff4757; width: 8px; height: 8px; border-radius: 50%; border: 2px solid white;"></span>
+                </div>
+            </header>
+
+            <main style="flex: 1; padding: 20px; overflow-y: auto; padding-bottom: 90px;">
+                
+                <div class="map-section" style="margin-bottom: 25px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <h4 style="font-size: 15px; color: #134454;">موقع التسليم</h4>
+                        <span style="font-size: 11px; color: var(--pnu-teal);">تغيير الموقع</span>
+                    </div>
+                    <div style="height: 120px; background: #e8f5e9; border-radius: 20px; position: relative; overflow: hidden; border: 1px solid #eee;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.57912445167!2d46.7214436!3d24.8144903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f0393043141f1%3A0xc3194a2872f2e5a6!2sPrincess%20Nourah%20Bint%20Abdulrahman%20University!5e0!3m2!1sen!2ssa!4v1700000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;">
+                            <i class="fas fa-map-marker-alt" style="color: #e74c3c; font-size: 24px;"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="services-grid">
+                    
+                    <div class="service-card" style="background: #134454;">
+                        <i class="fas fa-coffee" style="color: white;"></i>
+                        <h4 style="color: white; font-size: 16px; margin: 0;">كافيهات</h4>
+                        <p style="font-size: 11px; color: rgba(255,255,255,0.8); margin-top: 5px;">قهوتك توصلك</p>
+                    </div>
+
+                    <div class="service-card" style="background: #2c8fac;">
+                        <i class="fas fa-utensils" style="color: white;"></i>
+                        <h4 style="color: white; font-size: 16px; margin: 0;">مطاعم</h4>
+                        <p style="font-size: 11px; color: rgba(255,255,255,0.8); margin-top: 5px;">وجبات غداء</p>
+                    </div>
+
+                    <a href="customer_locker.html" style="text-decoration: none; color: inherit; flex: 1;">
+    <div class="service-card" style="background: #86c2a4; padding: 15px; border-radius: 20px; text-align: center; cursor: pointer; transition: 0.3s;">
+        <i class="fas fa-box" style="color: #134454; font-size: 24px;"></i>
+        <h4 style="color: #134454; font-size: 16px; margin: 8px 0 0;">لوكر</h4>
+        <p style="font-size: 11px; color: #134454; margin-top: 5px; opacity: 0.8;">استلام سريع</p>
+    </div>
+</a>
+
+                    <div class="service-card" style="background: #e5cc91;">
+                        <i class="fas fa-shopping-bag" style="color: #134454;"></i>
+                        <h4 style="color: #134454; font-size: 16px; margin: 0;">قرطاسية</h4>
+                        <p style="font-size: 11px; color: #134454; margin-top: 5px;">أدوات وكتب</p>
+                    </div>
+
+                    <div class="service-card" style="grid-column: span 2; background: #e0dfdc;">
+                        <i class="fas fa-star" style="color: #134454;"></i>
+                        <h4 style="color: #134454; font-size: 16px; margin: 0;">طلبات خاصة</h4>
+                        <p style="font-size: 11px; color: #134454; margin-top: 5px;">اطلبي أي شيء مو موجود بالقائمة</p>
+                    </div>
+
+                </div>
+
+<a href="customer_ordering.html" style="text-decoration: none; display: block; width: 100%;">
+    <button class="new-order-btn" style="width: 100%; border: none; font-family: inherit; font-size: 16px; padding: 18px; border-radius: 18px; cursor: pointer; background: var(--pnu-teal); color: white; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+        طلب توصيل جديد
+    </button>
+</a>
+
+            </main>
+
+            <nav class="bottom-nav">
+                <a href="customer_home.html" class="nav-item active"><i class="fas fa-map"></i><span>خريطة</span></a>
+                <a href="customer_order.html" class="nav-item"><i class="fas fa-clipboard-list"></i><span>طلبات</span></a>
+                <a href="customer_rewards.html" class="nav-item"><i class="fas fa-gift"></i><span>مكافات</span></a>
+                <a href="customer_profile.html" class="nav-item"><i class="fas fa-user"></i><span>الحساب</span></a>
+            </nav>
+
+        </div>
+    </div>
+</body>
+</html>
