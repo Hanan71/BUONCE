@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BOUNCE - مسح رمز اللوكر</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; background: #f0f2f5; 
+            display: flex; justify-content: center; align-items: center; min-height: 100vh;
+        }
+
+        .mobile-frame { 
+            width: 100%; max-width: 400px; height: 800px; 
+            background: #000; position: relative; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2); 
+            border-radius: 40px; border: 12px solid #333; 
+            overflow: hidden; display: flex; flex-direction: column;
+        }
+
+        .camera-view {
+            flex: 1;
+            position: relative;
+            background: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scanner-frame {
+            width: 250px;
+            height: 250px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            position: relative;
+            box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);
+        }
+
+        .corner {
+            position: absolute; width: 30px; height: 30px;
+            border: 4px solid #86c2a4;
+        }
+        .top-right { top: -2px; right: -2px; border-left: 0; border-bottom: 0; border-radius: 0 15px 0 0; }
+        .top-left { top: -2px; left: -2px; border-right: 0; border-bottom: 0; border-radius: 15px 0 0 0; }
+        .bottom-right { bottom: -2px; right: -2px; border-left: 0; border-top: 0; border-radius: 0 0 15px 0; }
+        .bottom-left { bottom: -2px; left: -2px; border-right: 0; border-top: 0; border-radius: 0 0 0 15px; }
+
+        .scan-line {
+            position: absolute; width: 100%; height: 2px;
+            background: #86c2a4; top: 0;
+            box-shadow: 0 0 15px #86c2a4;
+            animation: scan 2s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+
+        .camera-overlay {
+            position: absolute; bottom: 40px; width: 100%;
+            text-align: center; color: white; z-index: 10;
+        }
+
+        .back-btn {
+            position: absolute; top: 30px; right: 25px;
+            color: white; font-size: 24px; z-index: 10; cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="mobile-frame">
+<a href="javascript:history.back()" class="back-btn">
+    <i class="fas fa-times"></i>
+</a>
+
+        <div class="camera-view">
+            <div class="scanner-frame">
+                <div class="corner top-right"></div>
+                <div class="corner top-left"></div>
+                <div class="corner bottom-right"></div>
+                <div class="corner bottom-left"></div>
+                <div class="scan-line"></div>
+            </div>
+
+            <div class="camera-overlay">
+                <p style="font-size: 14px; margin-bottom: 20px; font-weight: 500;">وجه الكاميرا نحو الـ QR الموجود على اللوكر</p>
+                <div style="display: flex; justify-content: center; gap: 30px;">
+                    <div style="text-align: center;">
+                        <i class="fas fa-bolt" style="font-size: 24px; color: #aaa; margin-bottom: 5px;"></i>
+                        <p style="font-size: 10px; margin: 0;">فلاش</p>
+                    </div>
+                    <a href="#" style="color: white; text-decoration: none; text-align: center;">
+                        <i class="fas fa-keyboard" style="font-size: 24px; margin-bottom: 5px;"></i>
+                        <p style="font-size: 10px; margin: 0;">إدخال يدوي</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

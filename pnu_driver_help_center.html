@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>بونص - مركز المساعدة</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; background: #f0f2f5; 
+            display: flex; justify-content: center; align-items: center; min-height: 100vh;
+        }
+
+        .mobile-frame { 
+            width: 100%; max-width: 400px; height: 800px; 
+            background: white; position: relative; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2); 
+            border-radius: 40px; border: 12px solid #333; 
+            overflow: hidden; display: flex; flex-direction: column;
+        }
+
+        header {
+            padding: 25px 20px; background: #134454; color: white;
+            text-align: center; border-radius: 0 0 25px 25px; flex-shrink: 0;
+            position: relative;
+        }
+
+        .back-btn { position: absolute; right: 20px; top: 30px; color: white; text-decoration: none; }
+
+        main { flex: 1; overflow-y: auto; padding: 20px; background: #fdfdfd; }
+
+        /* البحث */
+        .search-box {
+            background: #f0f4f8; padding: 12px 15px; border-radius: 15px;
+            display: flex; align-items: center; gap: 10px; margin-bottom: 25px;
+        }
+        .search-box input { border: none; background: none; outline: none; flex: 1; font-family: inherit; font-size: 14px; }
+
+        /* الأقسام */
+        .help-section-title { font-size: 15px; color: #134454; font-weight: bold; margin-bottom: 15px; }
+
+        .help-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px; }
+        
+        .help-card {
+            background: white; border: 1px solid #eee; border-radius: 20px; padding: 15px;
+            text-align: center; transition: 0.3s; cursor: pointer;
+        }
+        .help-card:active { transform: scale(0.95); background: #f9f9f9; }
+        .help-card i { font-size: 24px; color: #2c8fac; margin-bottom: 10px; }
+        .help-card span { display: block; font-size: 12px; color: #555; font-weight: 500; }
+
+        /* الأسئلة الشائعة */
+        .faq-item {
+            background: white; border-radius: 15px; padding: 15px;
+            margin-bottom: 10px; border: 1px solid #f0f0f0;
+            display: flex; justify-content: space-between; align-items: center;
+            cursor: pointer;
+        }
+        .faq-item span { font-size: 13px; color: #134454; }
+        .faq-item i { color: #ccc; font-size: 12px; }
+
+        /* تواصل مع الدعم */
+        .support-footer {
+            padding: 20px; background: #f0f7f9; border-radius: 20px;
+            text-align: center; margin-top: 10px;
+        }
+        .support-btn {
+            background: #2c8fac; color: white; border: none; padding: 12px 25px;
+            border-radius: 12px; font-weight: bold; font-size: 14px; margin-top: 10px;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+            width: 100%; text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="mobile-frame">
+
+
+        <div id="chatBtn" onclick="toggleChat()" style="position: absolute; bottom: 100px; left: 20px; width: 55px; height: 55px; background: #134454; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 1000; transition: 0.3s;">
+    <i class="fas fa-comment-dots"></i>
+</div>
+
+<div id="chatBox" style="position: absolute; bottom: 100px; left: 20px; width: 280px; height: 350px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); z-index: 1001; display: none; flex-direction: column; overflow: hidden; border: 1px solid #eee;">
+    <div style="background: #134454; color: white; padding: 15px; display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 14px; font-weight: bold;">الدعم الفني - بونص</span>
+        <i class="fas fa-times" onclick="toggleChat()" style="cursor: pointer;"></i>
+    </div>
+    
+    <div style="flex: 1; padding: 15px; background: #f9f9f9; font-size: 12px; overflow-y: auto;">
+        <div style="background: #eef2f3; padding: 10px; border-radius: 10px; margin-bottom: 10px; align-self: flex-start; max-width: 80%;">
+            مرحباً كابتن حياة! كيف نقدر نساعدك اليوم؟ 👋
+        </div>
+    </div>
+    
+    <div style="padding: 10px; border-top: 1px solid #eee; display: flex; gap: 5px;">
+        <input type="text" placeholder="اكتبي رسالتك..." style="flex: 1; border: none; background: #f0f2f5; padding: 8px 12px; border-radius: 20px; font-size: 12px; outline: none;">
+        <button style="background: #2c8fac; color: white; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer;">
+            <i class="fas fa-paper-plane" style="font-size: 14px;"></i>
+        </button>
+    </div>
+</div>
+
+        <header>
+            <a href="driver_profile.html" class="back-btn"><i class="fas fa-arrow-right"></i></a>
+            <h3 style="margin: 0; font-size: 17px;">مركز المساعدة </h3><i class="fas fa-headphones"></i>
+        </header>
+
+        <main>
+            <div class="search-box">
+                <i class="fas fa-search" style="color: #bbb;"></i>
+                <input type="text" placeholder="كيف يمكننا مساعدتكِ يا كابتن؟">
+            </div>
+
+            <p class="help-section-title">أقسام المساعدة</p>
+            <div class="help-grid">
+                <div class="help-card">
+                    <i class="fas fa-box-open"></i>
+                    <span>مشاكل اللوكر</span>
+                </div>
+                <div class="help-card">
+                    <i class="fas fa-wallet"></i>
+                    <span>الأرباح والتحصيل</span>
+                </div>
+                <div class="help-card">
+                    <i class="fas fa-user-gear"></i>
+                    <span>إعدادات الحساب</span>
+                </div>
+                <div class="help-card">
+                    <i class="fas fa-shield-halved"></i>
+                    <span>الأمان والخصوصية</span>
+                </div>
+            </div>
+
+            <p class="help-section-title">الأسئلة الشائعة</p>
+            <div class="faq-item">
+                <span>كيف يمكنني زيادة نقاطي؟</span>
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="faq-item">
+                <span>ماذا أفعل إذا كان اللوكر ممتلئاً؟</span>
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="faq-item">
+                <span>نسيت غرضاً داخل الصندوق، ماذا أفعل؟</span>
+                <i class="fas fa-chevron-left"></i>
+            </div>
+
+            <div class="support-footer">
+                <p style="margin: 0; font-size: 13px; color: #134454; font-weight: bold;">لم تجدي حلاً؟</p>
+                <p style="margin: 5px 0 15px; font-size: 11px; color: #888;">فريق بونص متاح لخدمتكِ 24/7</p>
+                <a href="https://wa.me/9665XXXXXXXX" class="support-btn">
+                    <i class="fab fa-whatsapp"></i> تحدثي مع الدعم الفني
+                </a>
+            </div>
+        </main>
+
+        <p style="font-size: 10px; color: #bbb; text-align: center; margin-bottom: 20px;">بونص - دعم المندوبات</p>
+    </div>
+
+    <script>
+    function toggleChat() {
+        var chatBox = document.getElementById("chatBox");
+        var chatBtn = document.getElementById("chatBtn");
+        
+        if (chatBox.style.display === "none" || chatBox.style.display === "") {
+            chatBox.style.display = "flex";
+            chatBtn.style.transform = "scale(0)"; // الزر يختفي لما يفتح الشات
+        } else {
+            chatBox.style.display = "none";
+            chatBtn.style.transform = "scale(1)"; // الزر يرجع لما يتقفل الشات
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BOUNCE - طلباتي</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ستايل زر الطلب الجديد العائم */
+        @keyframes pulse-btn {
+            0% { transform: scale(1); box-shadow: 0 4px 15px rgba(19,68,84,0.3); }
+            50% { transform: scale(1.05); box-shadow: 0 6px 20px rgba(19,68,84,0.5); }
+            100% { transform: scale(1); box-shadow: 0 4px 15px rgba(19,68,84,0.3); }
+        }
+        .float-add-btn {
+            position: fixed;
+            bottom: 85px; /* فوق الناف بار */
+            left: 20px;
+            width: 55px;
+            height: 55px;
+            background: #134454; /* لون بونص الداكن */
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            z-index: 999;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(19,68,84,0.3);
+            animation: pulse-btn 2s infinite;
+            border: 2px solid white;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="mobile-frame">
+        <header class="app-header">
+            <img src="images/logo.png" alt="Bounce Logo" class="app-logo"> 
+            <div class="header-icons">
+                <div class="profile-pic"></div>
+                <i class="fas fa-bell notification-icon"></i>
+            </div>
+        </header>
+
+<main class="content">
+    <h2 style="color: var(--pnu-dark); text-align: center; display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px;">
+        قائمة طلباتي 
+        <i class="fas fa-clipboard-list" style="color: var(--pnu-dark); font-size: 22px;"></i>
+    </h2>
+
+    <div style="display: flex; background: #f0f0f0; padding: 5px; border-radius: 12px; margin-bottom: 20px;">
+        <button id="btn-active" onclick="showTab('active')" style="flex: 1; padding: 10px; border: none; border-radius: 10px; background: white; font-weight: bold; color: var(--pnu-dark); cursor: pointer; transition: 0.3s;">نشطة (1)</button>
+        <button id="btn-completed" onclick="showTab('completed')" style="flex: 1; padding: 10px; border: none; border-radius: 10px; background: transparent; color: #888; cursor: pointer; transition: 0.3s;">المكتملة</button>
+    </div>
+
+    <div id="active-orders">
+        <div class="active-order-card" style="background: white; border: 1.5px solid var(--pnu-teal); padding: 18px; border-radius: 25px; box-shadow: 0 8px 20px rgba(0,0,0,0.04);">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 15px; align-items: center;">
+                <span style="background: #e0f2f1; color: var(--pnu-teal); padding: 5px 12px; border-radius: 10px; font-size: 11px; font-weight: bold; display: flex; align-items: center; gap: 5px;">
+                    <i class="fas fa-truck-loading" style="font-size: 12px;"></i> جاري التوصيل
+                </span>
+                <span style="color: #bbb; font-family: monospace; font-size: 11px;">#BNZ-9920</span>
+            </div>
+            
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                <div style="width: 50px; height: 50px; background: #fffcf5; border: 1px solid #f9f2e0; border-radius: 15px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-mug-hot" style="color: var(--pnu-sand); font-size: 22px;"></i>
+                </div>
+                <div style="flex: 1;">
+                    <h4 style="margin: 0; font-size: 15px; color: var(--pnu-dark);">قهوة لاتيه - أخضر القهوة</h4>
+                    <div style="display: flex; align-items: center; gap: 5px; margin-top: 4px;">
+                        <i class="fas fa-map-marker-alt" style="color: #999; font-size: 10px;"></i>
+                        <p style="margin: 0; font-size: 11px; color: #888;">كلية الحاسب (محطة A4)</p>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="window.location.href='locker.html'" style="width: 100%; padding: 15px; background: var(--pnu-dark); color: white; border: none; border-radius: 15px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                تتبع الطلب / فتح اللوكر 
+                <i class="fas fa-unlock-alt" style="color: var(--pnu-sand); font-size: 16px;"></i>
+            </button>
+        </div>
+    </div>
+
+    <div id="completed-orders" style="display: none;">
+        <div style="background: white; border: 1px solid #eee; padding: 15px; border-radius: 20px; display: flex; align-items: center; gap: 12px; margin-bottom: 10px; opacity: 0.8;">
+            <div style="width: 40px; height: 40px; background: #f5f5f5; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-check-circle" style="color: #4caf50;"></i>
+            </div>
+            <div style="flex: 1;">
+                <h4 style="margin: 0; font-size: 13px;">وجبة غداء - شباك</h4>
+                <p style="margin: 0; font-size: 10px; color: #999;">تم التوصيل بواسطة: حياة عبدالله</p>
+            </div>
+            <span style="font-size: 10px; color: #bbb;">أمس</span>
+        </div>
+        
+       <p style="text-align: center; color: #bbb; font-size: 11px; margin-top: 25px; display: flex; align-items: center; justify-content: center; gap: 6px; opacity: 0.8;">
+    تم أرشفة الطلبات القديمة بنجاح 
+    <i class="fas fa-check-double" style="color: #4caf50; font-size: 13px;"></i>
+    </p>
+    </div>
+</main>
+
+    <a href="customer_ordering.html" class="float-add-btn">
+        <i class="fas fa-plus"></i>
+    </a>
+
+            <nav class="bottom-nav">
+                <a href="customer_home.html" class="nav-item active"><i class="fas fa-map"></i><span>خريطة</span></a>
+                <a href="customer_order.html" class="nav-item"><i class="fas fa-clipboard-list"></i><span>طلبات</span></a>
+                <a href="customer_rewards.html" class="nav-item"><i class="fas fa-gift"></i><span>مكافات</span></a>
+                <a href="customer_profile.html" class="nav-item"><i class="fas fa-user"></i><span>الحساب</span></a>
+            </nav>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        // دالة تبديل التبويبات (للتوضيح فقط إذا لم تكن في الملف الخارجي)
+        function showTab(tab) {
+            const activeDiv = document.getElementById('active-orders');
+            const completedDiv = document.getElementById('completed-orders');
+            const btnActive = document.getElementById('btn-active');
+            const btnCompleted = document.getElementById('btn-completed');
+            
+            if(tab === 'active') {
+                activeDiv.style.display = 'block';
+                completedDiv.style.display = 'none';
+                btnActive.style.background = 'white';
+                btnActive.style.color = 'var(--pnu-dark)';
+                btnCompleted.style.background = 'transparent';
+                btnCompleted.style.color = '#888';
+            } else {
+                activeDiv.style.display = 'none';
+                completedDiv.style.display = 'block';
+                btnCompleted.style.background = 'white';
+                btnCompleted.style.color = 'var(--pnu-dark)';
+                btnActive.style.background = 'transparent';
+                btnActive.style.color = '#888';
+            }
+        }
+    </script>
+</body>
+</html>
