@@ -6,7 +6,7 @@
 ## 👥 فريق العمل (The Team)
 هذا المشروع هو نتاج تعاون جماعي، حيث تكاتفت الجهود لتحويل الفكرة إلى واقع ملموس:
 * **التخطيط والدراسة:** عمل جماعي (فريق بونس).
-* **التطوير البرمجي( Screens developed by):Hanan
+* **التطوير البرمجي( Screens developed by):** Hanan
 * ## 💻 الجانب التقني (My Role)
 بصفتي مطورة المشروع، قمت بتنفيذ:
 - **Frontend:** بناء واجهات المستخدم (UI/UX) التفاعلية باستخدام (HTML/CSS/JS).
@@ -30,6 +30,6 @@
 
 
 
-<img width="844" height="725" alt="splash" src="https://github.com/user-attachments/assets/334fc58a-6abb-469e-8525-a84cbacb0bc9" />    صفحة splash  <img width="827" height="714" alt="login" src="https://github.com/user-attachments/assets/a785305f-eeea-42e5-8ae8-690475dc589e" />   صفحة الدخول      <img width="885" height="716" alt="pnudrimap" src="https://github.com/user-attachments/assets/621fb522-7162-4037-bd80-9a805212b4f4" />   صفحة خريطة مندوبة التوصيل
+<img width="844" height="725" alt="splash" src="https://github.com/user-attachments/assets/334fc58a-6abb-469e-8525-a84cbacb0bc9" />    صفحة splash  <img width="827" height="714" alt="login" src="https://github.com/user-attachments/assets/a785305f-eeea-42e5-8ae8-690475dc589e" />   صفحة الدخول      <img width="892" height="677" alt="pnudrimap" src="https://github.com/user-attachments/assets/03576dec-5754-406d-b392-2a88331b3dea" />   صفحة خريطة مندوبة التوصيل
 
-
+<img width="840" height="704" alt="driprofile" src="https://github.com/user-attachments/assets/b2bc087c-aae9-4cbf-8d1b-a78ad8c93c8e" /> بروفايل المندوب الخارجي
